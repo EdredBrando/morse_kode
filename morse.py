@@ -1,7 +1,7 @@
 # Dictionary til oversættelse fra bogstaver til morsekode
 morseCode = {'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.','G':'--.','H':'....','I':'..','J':'.---','K':'-.-','L':'--','N':'.-','O':'---','P':'.--.','Q':'--.-','R':'.-.','S':'...','T':'-','U':'..-','V':'...-','W':'.--','X':'-..-','Y':'-.--','Z':'--..', '1': '.----', '2': '..---', '3': '...--',
     '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
-    '9': '----.', '0': '-----',' ': ''}
+    '9': '----.', '0': '-----',' ': '', '':' '}
 
 # Dictionary til oversættelse fra morsekode til bogstaver. Tomt oversættes til mellemrum.
 morseCodeReverse = {}
@@ -40,4 +40,13 @@ print(encodeMessage('Morse kode er godt', morseCode))
 # '/' markerer nyt bogstav
 # '//' markerer nyt ord
 def decodeMessage(message, code):
-    pass
+    output = ''
+    t = '...././.---//.../---/...'
+    t2 = t.split('/')
+    for message in t2:
+        if message in code:
+            output += code[message]
+    return output
+
+print('Reverse Sætning:')
+print(decodeMessage('/..../',morseCodeReverse))
