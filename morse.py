@@ -1,5 +1,5 @@
 # Dictionary til oversættelse fra bogstaver til morsekode
-morseCode = {'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.','G':'--.','H':'....','I':'..','J':'.---','K':'-.-','L':'--','N':'.-','O':'---','P':'.--.','Q':'--.-','R':'.-.','S':'...','T':'-','U':'..-','V':'...-','W':'.--','X':'-..-','Y':'-.--','Z':'--..', '1': '.----', '2': '..---', '3': '...--',
+morseCode = {'A':'.-','B':'-...','C':'-.-.','D':'-..','E':'.','F':'..-.','G':'--.','H':'....','I':'..','J':'.---','K':'-.-','L':'--','N':'-.','O':'---','P':'.--.','Q':'--.-','R':'.-.','S':'...','T':'-','U':'..-','V':'...-','W':'.--','X':'-..-','Y':'-.--','Z':'--..', '1': '.----', '2': '..---', '3': '...--',
     '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
     '9': '----.', '0': '-----',' ': '', '':' '}
 
@@ -40,13 +40,12 @@ print(encodeMessage('Morse kode er godt', morseCode))
 # '/' markerer nyt bogstav
 # '//' markerer nyt ord
 def decodeMessage(message, code):
-    output = ''
-    t = '...././.---//.../---/...'
-    t2 = t.split('/')
-    for message in t2:
-        if message in code:
-            output += code[message]
+    output = '' #output er et sted som koden gradvist fylder op med den oversatte morse kode som er tilsvarende til vores indsatte besked
+    t2 = message.split('/') #Her ved koden at et skråstreg skal splitte morsekoden op, dvs. at den deler morsekoden op i bogstaver.
+    for message in t2: #Her sætter vi en loop for at vi kommer igennem alle bogstaverne i beskeden.
+        if message in code: #Hvis morse koden findes i den dictionary laves de om til bogstaver
+            output += code[message] #Her sørges der for at den oversatte morsekoden bliver delt fra hinanden med mellemrum
     return output
 
 print('Reverse Sætning:')
-print(decodeMessage('/..../',morseCodeReverse))
+print(decodeMessage('.-//-./.-/-./',morseCodeReverse))
